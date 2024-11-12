@@ -1,0 +1,48 @@
+.completed {
+    text-decoration: line-through;
+    color: grey;
+  }
+  
+.container{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.formCreate{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+}
+.create{
+  background-color: black;
+  width: 400px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.read{
+  background-color: rgb(34, 188, 194);
+  width: 400px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.read ul li{
+  list-style: none;
+}
+
+.read .text{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.details{
+  background-color: rgb(168, 168, 57);
+  width: 400px;
+  word-wrap: break-word;
+  padding: 1rem;
+}
