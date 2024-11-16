@@ -39,10 +39,28 @@ export class AppComponent implements OnInit {
     }
   }
 
+ 
+
   toggleCompleted(task: Task) {
-    task.completed = !task.completed;
-    this.taskService.updateTask(task).subscribe();
+    // Cambiamos el estado temporalmente
+    const updatedCompleted = !task.completed;
+  
+    // Hacemos la petición al backend para actualizar el estado
+    this.taskService.updateTaskStatus(task.id, updatedCompleted).subscribe(
+      () => {
+        // Si la actualización es exitosa, reflejamos el cambio en el frontend
+        task.completed = updatedCompleted;
+      },
+      (error) => {
+        // Si hay un error, mostramos un mensaje y revertimos el cambio
+        console.error('Error updating task status', error);
+        alert('Hubo un error al actualizar el estado de la tarea.');
+      }
+    );
   }
+  
+  
+  
 
   deleteTask(id: number) {
     this.taskService.deleteTask(id).subscribe(() => {
@@ -72,14 +90,15 @@ export class AppComponent implements OnInit {
 
   saveChanges(): void {
     if (this.editTask) {
-      // Actualiza la tarea en el array
-      this.taskService.updateTask(this.editTask).subscribe(updatedTask => {
-        const index = this.tasks.findIndex(t => t.id === updatedTask.id);
-        if (index > -1) {
-          this.tasks[index] = updatedTask;
-        }
+      this.taskService.updateTask(this.editTask).subscribe(() => {
+        // Refresca la lista completa de tareas
+        this.getTasks();
+        // Limpia el objeto editTask después de guardar
         this.editTask = { id: 0, title: '', description: '', completed: false };
+        this.selectedTask = null;
       });
     }
   }
+  
+  
 }
