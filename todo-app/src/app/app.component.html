@@ -1,63 +1,145 @@
-<div class="container">
-    <h1 class="title">Lista de Tareas</h1>
-    
-    <section class="create">
-        <form (submit)="addTask()" class="formCreate">
-        <input [(ngModel)]="newTask.title" name="title" placeholder="Título" required />
-        <input [(ngModel)]="newTask.description" name="description" placeholder="Descripción" />
-        <button type="submit">Añadir Tarea</button>
-        </form>
-    </section>
-  
-    <section class="read">
-        <h2>Tareas actuales</h2>
-        <ul>
-        <li *ngFor="let task of tasks" >
-          <input type="checkbox" [checked]="task.completed" (change)="toggleCompleted(task)" />
-          <span [class.completed]="task.completed" class="text" (click)="onSelect(task)">{{ task.title }}</span>
-            <button (click)="deleteTask(task.id)" class="btn btn-danger" style="margin-right:0.5rem">Eliminar</button>
-            <button (click)="openEditModal(task)" class="btn btn-primary">Editar</button>
-
-        </li>
-        </ul>
-    </section>
-
-    <section class="details">
-        <div *ngIf="selectedTask">
-            <h2>Task Details</h2>
-            <p><strong>Title:</strong> {{ selectedTask.title }}</p>
-            <p><strong>Description:</strong> {{ selectedTask.description }}</p>
-            <p><strong>Status:</strong> {{ getTaskStatus(selectedTask) }}</p>
-          </div>
-    </section>
-</div>
-  
-
-<!-- Modal de Edición -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editModalLabel">Editar Tarea</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Lista de Tareas</h1>
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title text-center">Nueva Tarea</h3>
+          <form (submit)="addTask()" class="formCreate">
             <div class="mb-3">
-              <label for="editTitle" class="form-label">Título</label>
-              <input type="text" [(ngModel)]="editTask.title" name="editTitle" class="form-control" id="editTitle">
+              <input
+                [(ngModel)]="newTask.title"
+                name="title"
+                placeholder="Título"
+                required
+                class="form-control"
+              />
             </div>
             <div class="mb-3">
-              <label for="editDescription" class="form-label">Descripción</label>
-              <input type="text" [(ngModel)]="editTask.description" name="editDescription" class="form-control" id="editDescription">
+              <input
+                [(ngModel)]="newTask.description"
+                name="description"
+                placeholder="Descripción"
+                class="form-control"
+              />
             </div>
+            <button type="submit" class="btn btn-success w-100">
+              <i class="bi bi-plus-circle"></i> Añadir Tarea
+            </button>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" (click)="saveChanges()" data-bs-dismiss="modal">Guardar cambios</button>
         </div>
       </div>
     </div>
+    <div class="col-md-4 mb-3">
+      <ul class="list-group">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+          *ngFor="let task of tasks"
+        >
+          <div>
+            <input
+              type="checkbox"
+              [checked]="task.completed"
+              (change)="toggleCompleted(task)"
+              class="form-check-input me-2"
+            />
+            <span
+              [class.completed]="task.completed"
+              class="text fw-bold"
+              (click)="onSelect(task)"
+              >{{ task.title }}</span
+            >
+          </div>
+          <div>
+            <button
+              (click)="deleteTask(task.id)"
+              class="btn btn-danger btn-sm me-2"
+            >
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+            <button
+              (click)="openEditModal(task)"
+              class="btn btn-primary btn-sm"
+            >
+              <i class="bi bi-pencil"></i> Editar
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div *ngIf="selectedTask" class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title text-center">Detalles de la Tarea</h3>
+          <p class="mb-2"><strong>Título:</strong> {{ selectedTask.title }}</p>
+          <p class="mb-2">
+            <strong>Descripción:</strong> {{ selectedTask.description }}
+          </p>
+          <p><strong>Estado:</strong> {{ getTaskStatus(selectedTask) }}</p>
+        </div>
+      </div>
+      <div *ngIf="!selectedTask" class="text-center text-muted">
+        <p>Selecciona una tarea para ver los detalles.</p>
+      </div>
+    </div>
   </div>
-  
+</div>
+
+<div
+  class="modal fade"
+  id="editModal"
+  tabindex="-1"
+  aria-labelledby="editModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Editar Tarea</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="editTitle" class="form-label">Título</label>
+            <input
+              type="text"
+              [(ngModel)]="editTask.title"
+              name="editTitle"
+              class="form-control"
+              id="editTitle"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="editDescription" class="form-label">Descripción</label>
+            <input
+              type="text"
+              [(ngModel)]="editTask.description"
+              name="editDescription"
+              class="form-control"
+              id="editDescription"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="saveChanges()"
+          data-bs-dismiss="modal"
+        >
+          Guardar cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
