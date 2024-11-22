@@ -1,48 +1,195 @@
-.completed {
-    text-decoration: line-through;
-    color: grey;
+/* General */
+body {
+  background-color: #f0f8ff;
+  color: #343a40;
+  font-family: 'Roboto', sans-serif; /* Fuente para un estilo moderno */
+  margin: 0;
+  padding: 0;
+}
+
+/* Título principal */
+h1 {
+  color: #000;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Tarjetas */
+.card {
+  border: none;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
-  
-.container{
-  text-align: center;
+
+/* Botones */
+button {
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+  button:hover {
+    transform: translateY(-3px);
+  }
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+  .btn-success:hover {
+    background-color: #218838;
+  }
+
+.btn-danger {
+  background-color: rgba(255, 0, 0, 0.5);
+  border: none;
+}
+
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+
+.btn-primary {
+  background-color: rgba(0, 123, 255, 0.5);
+  border: none;
+}
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+/* Formulario */
+input.form-control {
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+}
+
+  input.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+/* Lista de tareas */
+.list-group-item {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+  .list-group-item:hover {
+    background-color: #f1f1f1;
+  }
+
+.completed {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+/* Modal */
+/* Modal */
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.modal-header {
+  border-bottom: none;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  background-color: #007bff;
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-.formCreate{
+  .modal-header h5 {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .modal-header .btn-close {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+
+    .modal-header .btn-close:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+.modal-body {
+  padding: 20px;
+}
+
+  .modal-body label {
+    font-weight: bold;
+    color: #343a40;
+  }
+
+  .modal-body .form-control {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+  }
+
+    .modal-body .form-control:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+.modal-footer {
+  border-top: none;
   display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  gap: 1rem;
-}
-.create{
-  background-color: black;
-  width: 400px;
-  margin-bottom: 2rem;
-  padding: 1rem;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px 20px;
 }
 
-.read{
-  background-color: rgb(34, 188, 194);
-  width: 400px;
-  margin-bottom: 2rem;
-  padding: 1rem;
+  .modal-footer .btn {
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .modal-footer .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+
+    .modal-footer .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+
+  .modal-footer .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+
+    .modal-footer .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+
+.modal-header {
+  border-bottom: none;
 }
 
-.read ul li{
-  list-style: none;
-}
-
-.read .text{
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.details{
-  background-color: rgb(168, 168, 57);
-  width: 400px;
-  word-wrap: break-word;
-  padding: 1rem;
+.modal-footer {
+  border-top: none;
 }
