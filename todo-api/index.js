@@ -22,7 +22,7 @@ db.connect((err) => {
   console.log("Connected to MySQL database.");
 });
 
-// Rutas de la API CRUD
+
 app.get("/tasks", (req, res) => {
   db.query("SELECT * FROM tasks", (err, results) => {
     if (err) {
