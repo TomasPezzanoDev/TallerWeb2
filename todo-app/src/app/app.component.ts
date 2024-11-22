@@ -16,7 +16,7 @@ interface Task {
 export class AppComponent implements OnInit {
   tasks: Task[] = [];
   newTask: Partial<Task> = {};
-  selectedTask: Task | null = null;  // Para almacenar la tarea seleccionada
+  selectedTask: Task | null = null;  
   editTask: Task = { id: 0, title: '', description: '', completed: false };
 
 
@@ -42,17 +42,13 @@ export class AppComponent implements OnInit {
  
 
   toggleCompleted(task: Task) {
-    // Cambiamos el estado temporalmente
     const updatedCompleted = !task.completed;
   
-    // Hacemos la petición al backend para actualizar el estado
     this.taskService.updateTaskStatus(task.id, updatedCompleted).subscribe(
       () => {
-        // Si la actualización es exitosa, reflejamos el cambio en el frontend
         task.completed = updatedCompleted;
       },
       (error) => {
-        // Si hay un error, mostramos un mensaje y revertimos el cambio
         console.error('Error updating task status', error);
         alert('Hubo un error al actualizar el estado de la tarea.');
       }
@@ -77,7 +73,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  // Devolver el estado de completada
+
   getTaskStatus(task: Task): string {
     return task.completed ? 'Completed' : 'Pending';
   }
@@ -91,9 +87,9 @@ export class AppComponent implements OnInit {
   saveChanges(): void {
     if (this.editTask) {
       this.taskService.updateTask(this.editTask).subscribe(() => {
-        // Refresca la lista completa de tareas
+        
         this.getTasks();
-        // Limpia el objeto editTask después de guardar
+       
         this.editTask = { id: 0, title: '', description: '', completed: false };
         this.selectedTask = null;
       });
