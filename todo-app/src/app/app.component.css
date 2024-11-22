@@ -1,13 +1,12 @@
-/* General */
+
 body {
   background-color: #f0f8ff;
   color: #343a40;
-  font-family: 'Roboto', sans-serif; /* Fuente para un estilo moderno */
+  font-family: 'Roboto', sans-serif; 
   margin: 0;
   padding: 0;
 }
 
-/* Título principal */
 h1 {
   color: #000;
   font-size: 2.5rem;
@@ -15,7 +14,7 @@ h1 {
   text-transform: uppercase;
 }
 
-/* Tarjetas */
+
 .card {
   border: none;
   border-radius: 12px;
@@ -27,7 +26,7 @@ h1 {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 
-/* Botones */
+
 button {
   border-radius: 8px;
   transition: background-color 0.3s, transform 0.2s;
@@ -64,7 +63,7 @@ button {
     background-color: #0056b3;
   }
 
-/* Formulario */
+
 input.form-control {
   border-radius: 6px;
   border: 1px solid #ced4da;
@@ -75,7 +74,7 @@ input.form-control {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   }
 
-/* Lista de tareas */
+
 .list-group-item {
   border-radius: 8px;
   border: none;
@@ -92,8 +91,7 @@ input.form-control {
   color: #6c757d;
 }
 
-/* Modal */
-/* Modal */
+
 .modal-content {
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
