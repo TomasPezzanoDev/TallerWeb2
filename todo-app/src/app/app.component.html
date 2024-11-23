@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <ul class="list-group">
+      <ul class="list-group" style="gap: 1em;">
         <li
           class="list-group-item d-flex justify-content-between align-items-center"
           *ngFor="let task of tasks"
@@ -46,6 +46,7 @@
             <span
               [class.completed]="task.completed"
               class="text fw-bold"
+              style="text-decoration: underline; cursor: pointer;"
               (click)="onSelect(task)"
               >{{ task.title }}</span
             >
