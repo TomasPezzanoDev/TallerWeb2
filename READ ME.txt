@@ -1,0 +1,22 @@
+Instrucciones
+
+1. Clona o descomprime el proyecto.
+2. Navega al backend (todo-api) y al frontend (todo-app).
+3. En cada carpeta, ejecuta: npm install.
+4. En el backend una vez utilizado npm install, utilizar node index.js para correr la api.
+5. En el frontend una vez utilizado npm install, utilizar ng serve para construir y servir la aplicación.
+
+El proyecto utiliza como bases de datos el motor MySQL.
+Es necesario tener MySQL instalado localmente.
+
+CREATE DATABASE todo_app;
+USE todo_app;
+
+CREATE TABLE tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    completed BOOLEAN DEFAULT false
+);
+
+Una vez creada la base de datos localmente, es necesario cambiar el usuario y contraseña en el backend a la hora de realizar la conexión.
